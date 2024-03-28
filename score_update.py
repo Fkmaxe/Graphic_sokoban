@@ -2,7 +2,7 @@ def update_top_scores(new_name, new_score, filename="top_scores.txt"):
     try:
         with open(filename, 'r') as file:
             scores = [line.strip().split() for line in file.readlines()]
-            scores = [(name, int(score)) for name, score in scores]
+            scores = [(name, int(score)) for name, score in [line for line in scores if len(line) == 2]]
     except FileNotFoundError:
         scores = []
 
